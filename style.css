@@ -1,0 +1,226 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #f0f4f8, #d9e4ec);
+    margin: 0;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: center; /* Center the contents */
+    margin-bottom: 20px;
+}
+
+.theme-toggle i {
+    margin-right: 10px; /* Space between the moon icon and label */
+    font-size: 1.5em; /* Adjust icon size */
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px; /* Reduced width for a smaller slider */
+    height: 24px; /* Reduced height for a smaller slider */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px; /* Round the slider */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; /* Adjusted height for smaller knob */
+    width: 18px; /* Adjusted width for smaller knob */
+    left: 3px; /* Adjusted left position */
+    bottom: 3px; /* Adjusted bottom position */
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%; /* Round the toggle knob */
+}
+
+input:checked + .slider {
+    background-color: #1e88e5;
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px); /* Move the knob to the right */
+}
+
+.task-input {
+    display: flex;
+    flex-direction: column; /* Stack inputs vertically */
+    gap: 10px; /* Space between inputs */
+    margin-bottom: 20px;
+}
+
+.task-input input,
+.task-input select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-grow: 1;
+    transition: border 0.3s;
+    width: 100%; /* Make inputs full width */
+}
+
+.task-input input:focus,
+.task-input select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.sorting-options {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#task-list li {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 6px solid transparent;
+    transition: background 0.3s, border-left 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#task-list li:hover {
+    background: #e3f2fd;
+}
+
+#task-list li.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+#task-list li.low {
+    border-left: 6px solid #28a745; /* Green */
+}
+
+#task-list li.medium {
+    border-left: 6px solid #ffc107; /* Yellow */
+}
+
+#task-list li.high {
+    border-left: 6px solid #dc3545; /* Red */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 90%; /* Make modal responsive */
+    max-width: 400px; /* Limit maximum width for larger screens */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+    color: #dc3545;
+}
+
+/* Dark Mode */
+body.dark {
+    background: #121212;
+    color: #ffffff;
+}
+
+body.dark .container {
+    background: #1e1e1e;
+}
+
+body.dark button {
+    background-color: #1e88e5;
+}
+
+body.dark #task-list li {
+    background: #333;
+}
+
+body.dark #task-list li:hover {
+    background: #444;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .task-input {
+        flex-direction: column; /* Ensure vertical stacking on small screens */
+    }
+
+    button {
+        width: 100%; /* Make buttons full width */
+    }
+
+    #alarm-time {
+        width: 100%; /* Ensure alarm input fits the screen */
+    }
+}

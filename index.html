@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>Professional To-Do List App</title>
+    <style>
+        /* Toggle Switch Styles */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 10px; /* Added margin for better spacing */
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Dark Mode Styles */
+        body.dark {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        body.dark .task-input, body.dark .sorting-options, body.dark #task-modal {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+        
+        body.dark #task-list li {
+            background-color: #292929;
+            color: #ffffff;
+        }
+        
+        /* Add other dark mode styles as needed */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My To-Do List</h1>
+        <div class="theme-toggle">
+            <i class="fas fa-moon" id="theme-icon"></i> <!-- Added moon icon -->
+            <label for="theme-switch">Dark Mode</label>
+            <div class="switch">
+                <input type="checkbox" id="theme-switch">
+                <span class="slider"></span>
+            </div>
+        </div>
+        <div class="task-input">
+            <input type="text" id="new-task" placeholder="What do you need to do?" />
+            <select id="task-category">
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="shopping">Shopping</option>
+            </select>
+            <select id="task-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <input type="date" id="due-date" />
+            <label for="alarm-time">Set Alarm:</label>
+            <input type="datetime-local" id="alarm-time" /> <!-- Updated to datetime-local -->
+            <button id="add-task-btn"><i class="fas fa-plus"></i> Add Task</button>
+        </div>
+
+        <div class="sorting-options">
+            <button id="sort-date-btn"><i class="fas fa-calendar-alt"></i> Sort by Due Date</button>
+            <button id="sort-priority-btn"><i class="fas fa-exclamation-circle"></i> Sort by Priority</button>
+            <button id="filter-completed-btn"><i class="fas fa-filter"></i> Filter Completed</button>
+        </div>
+
+        <ul id="task-list"></ul>
+
+        <!-- Task Detail Modal -->
+        <div id="task-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Task Details</h2>
+                <div id="task-details"></div>
+                <button id="close-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
